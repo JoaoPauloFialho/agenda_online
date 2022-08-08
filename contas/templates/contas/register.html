@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block titulo %}Registro{% endblock %}
+{% block conteudo %}
+
+    <form method="post" action={% url 'register' %}>
+        {% csrf_token %}
+        {% include 'partial/_mensagem_erro.html' %}
+        <div class="form-group">
+            <label>Nome</label>
+            <input type="nome" name="nome" value="{{ request.POST.nome }}" class="form-control">
+        </div>
+        <div class="form-group">
+            <label>Sobrenome</label>
+            <input type="text" name="sobrenome" value="{{ request.POST.sobrenome }}" class="form-control">
+        </div>
+        <div class="form-group">
+            <label>Email address</label>
+            <input type="email" name="email" value="{{ request.POST.email }}" class="form-control">
+        </div>
+        <div class="form-group">
+            <label>Usuário</label>
+            <input type="text" name="usuario" value="{{ request.POST.usuario }}" class="form-control">
+        </div>
+        <div class="form-group">
+            <label>Senha</label>
+            <input type="password" name="senha" class="form-control">
+        </div>
+        <div class="form-group">
+            <label>Repetir Senha</label>
+            <input type="password" name="senha2" class="form-control" >
+        </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+
+{% endblock %}

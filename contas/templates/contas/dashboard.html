@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block titulo %}Dashboard{% endblock %}
+{% csrf_token %}
+{% load static %}
+
+{% block conteudo %}
+    {% include 'partial/_mensagem_erro.html' %}
+    <br>
+    <h2>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DADOS DO USUÁRIO</h2>
+
+    <br>
+    <div class="container">
+        <form action="{% url 'dashboard' %}" method="post" enctype="multipart/form-data">
+            <table class="table">
+                {% csrf_token %}
+                {{ form }}
+            </table>
+            <button type="submit" class="btn btn-primary">Enviar</button>
+        </form>
+
+    </div>
+{% endblock %}

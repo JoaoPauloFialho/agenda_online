@@ -1,0 +1,47 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <title>{% block titulo %} {% endblock %}Agenda</title>
+    {% include 'partial/_head.html' %}
+
+
+    <!-- Bootstrap core CSS -->
+    <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+
+</head>
+
+<body>
+
+<!-- Navigation -->
+
+{% include 'partial/_navigation.html' %}
+
+<!-- Page Content -->
+<br><br>
+{% if 'contas' not in request.path %}
+    <form method="get" action="{% url 'busca' %}">
+    <div class="form-group row">
+    <div class="col-12">
+    <input class="form-control"
+           type="search" value="{{ request.GET.termo }}"
+           id="search-input"
+           placeholder="Digite sua pesquisa"
+           name="termo">
+    {% include 'partial/_mensagem_erro.html' %}
+{% endif %}
+
+</div>
+</div>
+</form>
+{% block conteudo %}
+{% endblock %}
+
+<!-- Bootstrap core JavaScript -->
+<script src="{% static 'static/vendor/bootstrap/css/bootstrap.min.css' %}"></script>
+<script src="{% static 'static/vendor/bootstrap/css/bootstrap.min.css' %}"></script>
+
+</body>
+
+</html>
